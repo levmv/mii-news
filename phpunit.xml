@@ -9,7 +9,7 @@
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
     <coverage>
         <include>
-            <file>News.php</file>
+            <file>Date.php</file>
         </include>
     </coverage>
     <testsuites>
