@@ -4,7 +4,7 @@ namespace mii\news;
 
 use mii\util\UTF8;
 
-class Misc
+final class Misc extends \mii\util\Misc
 {
 
     public static function clearVkCache(string $url, string $token)

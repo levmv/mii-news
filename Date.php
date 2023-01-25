@@ -5,7 +5,7 @@ namespace mii\news;
 use mii\util\Text;
 use mii\util\UTF8;
 
-class Date extends \mii\util\Date
+final class Date extends \mii\util\Date
 {
     public static function midnight(int $date): int
     {
@@ -15,8 +15,8 @@ class Date extends \mii\util\Date
     private static ?int $now = null;
     private static ?int $yesterday = null;
 
-    const HOURS = ['час', 'часа', 'часов'];
-    const MINUTES = ['минуту', 'минуты', 'минут'];
+    public const HOURS = ['час', 'часа', 'часов'];
+    public const MINUTES = ['минуту', 'минуты', 'минут'];
 
     public static function age(int $date): string
     {
@@ -65,7 +65,7 @@ class Date extends \mii\util\Date
         $offset = abs(self::$now - $timestamp);
 
         if ($timestamp > self::$now) {
-            return static::futureNewsDate($offset, $timestamp);
+            return self::futureNewsDate($offset, $timestamp);
         }
 
         if ($offset <= self::MINUTE) {
@@ -85,8 +85,8 @@ class Date extends \mii\util\Date
         } elseif ($timestamp >= self::$yesterday) {
             $date = 'вчера';
         } else {
-            static::$thisYear ??= \mktime(0, 0, 0, 1, 1);
-            $date = self::intl($timestamp >= static::$thisYear ? 'd MMMM' : 'd MMMM YYYY')->format($timestamp);
+            self::$thisYear ??= \mktime(0, 0, 0, 1, 1);
+            $date = self::intl($timestamp >= self::$thisYear ? 'd MMMM' : 'd MMMM YYYY')->format($timestamp);
         }
         return [$date, date('H:i', $timestamp)];
     }

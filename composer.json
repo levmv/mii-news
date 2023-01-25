@@ -20,6 +20,6 @@
     }
   ],
   "autoload": {
-    "classmap": ["Date.php"]
+    "classmap": ["Date.php", "Misc.php"]
   }
 }
